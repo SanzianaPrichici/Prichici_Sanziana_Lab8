@@ -10,8 +10,7 @@ namespace Prichici_Sanziana_Lab8.Models
     public class BookCategoriesPageModel:PageModel
     {
         public List<AssignedCategoryData> AssignedCategoryDataList;
-        public void PopulateAssignedCategoryData(Prichici_Sanziana_Lab8Context context,
-        Book book)
+        public void PopulateAssignedCategoryData(Prichici_Sanziana_Lab8Context context, Book book)
         {
             var allCategories = context.Category;
             var bookCategories = new HashSet<int>(

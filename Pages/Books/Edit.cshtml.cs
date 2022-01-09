@@ -40,6 +40,7 @@ namespace Prichici_Sanziana_Lab8.Pages.Books
             {
                 return NotFound();
             }
+            PopulateAssignedCategoryData(_context, Book);
             ViewData["PublisherID"] = new SelectList(_context.Set<Publisher>(), "ID", "PublisherName");
             return Page();
         }
@@ -54,8 +55,7 @@ namespace Prichici_Sanziana_Lab8.Pages.Books
             }
             var bookToUpdate = await _context.Book
             .Include(i => i.Publisher)
-            .Include(i => i.BookCategories)
-            .ThenInclude(i => i.Category)
+            .Include(i => i.BookCategories).ThenInclude(i => i.Category)
             .FirstOrDefaultAsync(s => s.ID == id);
             if (bookToUpdate == null)
             {
